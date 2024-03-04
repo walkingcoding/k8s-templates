@@ -11,7 +11,7 @@ metadata:
  labels:
    app: kubernetes-dashboard
  name: "kubernetes-dashboard"
- namespace: base
+ namespace: kubernetes-dashboard
 spec:
   rules:
     - http:
