@@ -6,7 +6,7 @@ metadata:
    alb.ingress.kubernetes.io/target-type: ip
    kubernetes.io/ingress.class: alb
    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
-   alb.ingress.kubernetes.io/certificate-arn: arn:aws-cn:acm:cn-northwest-1:383002861252:certificate/cb2ff213-f290-4cf0-9be7-cfa61eba2b99
+   alb.ingress.kubernetes.io/certificate-arn: XXX
  creationTimestamp: null
  labels:
    app: kubernetes-dashboard
