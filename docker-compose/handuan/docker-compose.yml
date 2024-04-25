@@ -4,8 +4,8 @@ services:
     image: mysql:5.7.44
     container_name: mysql57
     environment:
-      MYSQL_ROOT_PASSWORD: HanduanMysql57@2024
-      MYSQL_ROOT_HOST: %
+      MYSQL_ROOT_PASSWORD: "HanduanMysql57@2024"
+      MYSQL_ROOT_HOST: "%"
     volumes:
       - ./mysql57/conf.d/:/etc/mysql/conf.d
       - /data/mysql57/:/var/lib/mysql
