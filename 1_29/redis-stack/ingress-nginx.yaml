@@ -7,16 +7,6 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-    - host: redis-stack-server.dev.handuan-cloud.com
-      http:
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: redis-stack
-                port:
-                  name: server
     - host: redis-stack-insight.dev.handuan-cloud.com
       http:
         paths:
