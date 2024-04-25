@@ -1,0 +1,20 @@
+################################
+### PersistentVolume
+################################
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: redis-stack-pv
+  labels:
+    release: stable
+spec:
+  capacity:
+    storage: 50Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: efs-sc
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: fs-00ffd76d0f5481515

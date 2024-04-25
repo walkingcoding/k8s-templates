@@ -12,8 +12,10 @@ metadata:
     app.kubernetes.io/version: "v1.0.0"
 spec:
   ports:
-    - name: api
-      port: 9100
+    - name: insight
+      port: 8001
+    - name: server
+      port: 6379
   selector:
     app.kubernetes.io/name: redis-stack
 
@@ -49,7 +51,7 @@ spec:
           image: redis/redis-stack:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8081
+            - containerPort: 8001
               name: insight
               protocol: TCP
             - containerPort: 6379
@@ -58,7 +60,8 @@ spec:
           volumeMounts:
             # Create on-disk volume to store exec logs
             - mountPath: /data
-              name: data-volume
+              name: redis-stack-data
       volumes:
-        - name: data-volume
-          emptyDir: { }
+        - name: redis-stack-data
+          persistentVolumeClaim:
+            claimName: redis-stack-pvc

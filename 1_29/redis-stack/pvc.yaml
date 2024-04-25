@@ -1,0 +1,19 @@
+################################
+### PersistentVolumeClaim
+################################
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-stack-pvc
+  labels:
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: "efs-sc"
+  resources:
+    requests:
+      storage: 50Gi
+  selector:
+    matchLabels:
+      release: "stable"
