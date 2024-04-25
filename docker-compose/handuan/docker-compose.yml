@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  mysql57:
+    image: mysql:5.7.44
+    container_name: mysql57
+    environment:
+      MYSQL_ROOT_PASSWORD: HanduanMysql57@2024
+      MYSQL_ROOT_HOST: %
+    volumes:
+      - ./mysql57/conf.d/:/etc/mysql/conf.d
+      - /data/mysql57/:/var/lib/mysql
+    ports:
+      - "13306:3306"
+    restart: on-failure
+  redis-stack:
+    image: redis/redis-stack:latest
+    container_name: redis-stack
+    volumes:
+      - ./data/redis-stack/:/data
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+    restart: on-failure
+  nacos:
+    image: nacos/nacos-server:latest
+    container_name: nacos
+    env_file:
+      - nacos/env/custom-application-config.env
+    volumes:
+      - /data/nacos/logs/:/home/nacos/logs
+      - ./nacos/init.d/application.properties:/home/nacos/conf/application.properties
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+    restart: on-failure
